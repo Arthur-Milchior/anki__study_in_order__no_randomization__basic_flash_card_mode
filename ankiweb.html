@@ -1,0 +1,46 @@
+Study In Fixed Order, No Randomization (Basic Flash Card Mode)
+
+<b>BETA</b>
+This is not a finished version. Use this at your own risk. Know how to check if the scheduling works as expected (e.g. with an add-on like [Extended Card Stats During Review](https://ankiweb.net/shared/info/1008566916)) and how to restore from a backup. This is made mostly as an experiment. If you find a bug let me know on <a href="https://github.com/ijgnd/anki__study_in_order__no_randomization__basic_flash_card_mode/issues" rel="nofollow">github</a> or via reddit (/u/ijgnord). The rest of the description assumes that this add-on works as intended ...
+
+<b># Background</b>
+Anki deliberately mixes reviews: When you rate a card Anki doesn't apply exactly the interval it shows about the buttons. Instead it slightly randomizes each interval (<a href="https://apps.ankiweb.net/docs/manual.html#due-counts-and-time-estimates" rel="nofollow">manual</a>) so that cards are mostly shown not in the same order twice. This add-on adds various options to remove this randomization. If you use all of them if you study cards on the same day and rate them the same you will always see them on the same days in the same order. This makes Anki more like a simple flash card app.
+
+The option only works with cards that you studied <b>only on the desktop</b> (Windows, Mac, or Linux) and only while this add-on was activated and it was not designed for custom study/filtered decks. If you rate some of the cards on ankiweb or on your smartphone once they will be in a different order. So the option to remove all randomization has a very limited use-case. That's a technical limitation because add-ons can't affect the scheduling on your smartphone.
+
+<b># Options/Technical background</b>
+In Anki cards can be in the state "new", "learning", and "review", see <a href="https://apps.ankiweb.net/docs/manual.html#study-overview" rel="nofollow">this section from the manual</a>.
+ 
+This add-on offers four options:
+
+1. "show <b>new</b> sibling cards in order <b>right after each other</b>". Say you have note1 (with the new cards 1,2,3) and note2 (with the new cards A,B). Anki will show you the cards in this order: 1,A,2,B,3 even if you have disabled "Bury related new cards until the next day". This option allows you to see the cards in the order 1,2,3,A,B. This option is available as a standalone add-on <a href="https://ankiweb.net/shared/info/268644742" rel="nofollow">here</a>.
+2. "show due <b>review</b> sibling cards in order". This makes sure that you always see a c1 cloze before a c2 cloze etc.
+3. "order due <b>review</b> cards by creation time".
+4. "After rating a card <b>don't</b> add fuzz/randomization to the intervals". 
+
+For each option you can set exceptions for certain decks. These exception are not applied to subdecks. So make sure to manually select all subdecks in the exceptions dialog.
+
+<b># Should I use this add-on?</b>
+Probably not. Before you use this add-on try out the Anki scheduler for some time. It sometimes takes some time to get accustomed to Anki's randomization. But I like it. Before you use this add-on read the official FAQ entry <a href="https://anki.tenderapp.com/kb/problems/ankis-not-showing-me-all-my-cards" rel="nofollow"> Anki's not showing me all my cards!</a>. To learn more about the scheduler check the manual or if you prefer vides e.g. <a href="https://www.youtube.com/watch?v=1XaJjbCSXT0" rel="nofollow">Guide to Anki Intervals and Learning Steps</a>.
+
+<b># Technical background</b>
+The options 2. and 3. could be implemented by changing how Anki fills the revQueue. I deliberately chose a different approach so that the add-on HoochieMama that also affects the queue creation still works. My approach is more computationally intensive but on my computer I didn't notice a speed difference. 
+
+<b># Alternatives</b>
+There are several add-ons that remove randomization like "No Fuzz Whatsoever" or "DeFuzz Quick Effective Trimming" - but only for cards in the state "review" and not for cards in "learning".  
+  
+<b># Compatibility</b>
+This add-on does not work with "Load Balancer" since "Load Balancer" changes the way Anki
+calculates the randomness. But my add-on is about removing all randomness.
+
+This add-ons overwrites "_answerLrnCard". Other add-ons that also overwrite or modify this function are not compatible. in 2019-12 such add-ons are:
+
+-  <a href="https://ankiweb.net/shared/info/1481634779" rel="nofollow">Another Retreat</a> from 2017-08-26 which was removed from Ankiweb in 2019-12.
+-  <a href="https://ankiweb.net/shared/info/1895194444" rel="nofollow">Change review order (review - new - learn cards)</a> (also affect the "Anki 2.1"/"experimental scheduler V2").
+-  <a href="https://ankiweb.net/shared/info/1550991760" rel="nofollow">More Answer Buttons (with colors)</a>. N o one should use this add-on since it reduces the ease during each review. this bug has been document for years and hasn't been fixed for years.
+-  <a href="https://ankiweb.net/shared/info/1744022099" rel="nofollow">Anki Yasui</a>
+-  <a href="https://ankiweb.net/shared/info/61346236" rel="nofollow">Stepwise Map Retrieval</a>
+
+<b>other authors</b>
+- <a href="https://github.com/lovac42/ReMemorize" rel="nofollow">lovac42</a>
+- <a href="https://www.basiskarten.de/" rel="nofollow">Thomas Kahn</a> (some German translations).
